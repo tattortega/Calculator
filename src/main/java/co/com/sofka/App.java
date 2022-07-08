@@ -32,6 +32,13 @@ public class App {
         logger.log(Level.INFO, "La multiplicación de cada indice de las dos listas es: {0}", multiplication);
     }
 
+    public void division(List<Integer> arr1, List<Integer> arr2) {
+        List<Integer> division = IntStream.range(0, arr1.size())
+                .filter(num -> arr2.get(num) != 0)
+                .mapToObj(i -> arr1.get(i) / arr2.get(i))
+                .collect(Collectors.toList());
+        logger.log(Level.INFO, "La division de cada indice de las dos listas es: {0}", division);
+    }
     public static void main(String[] args) {
         final List<Integer> arr1 = List.of(3, 5, 7, 8);
         final List<Integer> arr2 = List.of(0, 9, 6, 1, 4);
@@ -39,5 +46,6 @@ public class App {
         app.sum(arr1, arr2);
         app.subtract(arr1,arr2);
         app.multiplication(arr1,arr2);
+        app.division(arr1,arr2);
     }
 }
